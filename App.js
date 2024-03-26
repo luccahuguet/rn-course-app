@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
-    paddingBottom: 24, // Corrected property name
+    paddingBottom: 24,
   },
   goalsContainer: {
     flex: 4,
