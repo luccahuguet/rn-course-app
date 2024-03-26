@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { View, StyleSheet, Button, TextInput } from "react-native";
+import { View, StyleSheet, Button, TextInput, Modal } from "react-native";
 
 function GoalInput(props) {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -15,23 +15,31 @@ function GoalInput(props) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Enter a goal"
-        onChangeText={goalInputHandler}
-        value={enteredGoalText}
-      />
-      <Button title="Submit" onPress={addGoalHandler} />
-    </View>
+    <Modal animationType="slide" visible={props.visible}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter a goal"
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Submit" onPress={addGoalHandler} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={props.onCancel} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 24, // Corrected property name
     borderBottomWidth: 1,
@@ -41,9 +49,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     padding: 8,
-    marginRight: 8,
     width: "70%",
     borderRadius: 100,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 16,
+  },
+  button: {
+    width: 100,
+    borderRadius: 100,
+    marginHorizontal: 8,
   },
 });
 
