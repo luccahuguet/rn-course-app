@@ -11,6 +11,9 @@
 		},
 		"ignore": ["**/*.js", "*.js"]	
 	},
+	"javascript": {
+		"globals": []
+	},
   "files": {
     "ignore": ["**/*.js"]
   }	
